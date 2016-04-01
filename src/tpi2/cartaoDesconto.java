@@ -11,11 +11,10 @@ package tpi2;
  */
 public abstract class cartaoDesconto extends cartoes{
     
+    private static int numCartoesDesconto = 1; 
+            
     @Override
     public abstract float calculaMensalidade();
-    
-    @Override
-    public abstract float calculaMensalidadeSemDesconto();
     
     public cartaoDesconto(String nome, int contribuinte, int numPecas)
     {
@@ -25,6 +24,20 @@ public abstract class cartaoDesconto extends cartoes{
     public cartaoDesconto()
     {
         super();
+    }
+    
+    @Override
+    public abstract String toString2();
+    
+    @Override
+    public abstract String toString3();
+
+    public int getNumCartoesDesconto() {
+        return numCartoesDesconto;
+    }
+
+    public static void incrementaNumCartoesDesconto() {
+        numCartoesDesconto++;
     }
    
 }

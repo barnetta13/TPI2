@@ -9,38 +9,57 @@ package tpi2;
  *
  * @author Daniel Martins
  */
-public abstract class cartaoPrata extends cartoes{
+public class cartaoPrata extends cartoes{
     
     private String cartaoPrataID = "CSD-Prata-";
+    
+    private static int numCartoes = 1;
     
     public cartaoPrata(String nome, int contribuinte, int numPecas)
     {
         super(nome, contribuinte, numPecas);
-        this.cartaoPrataID = cartaoPrataID + super.getNumCartao();
+        this.cartaoPrataID = cartaoPrataID + numCartoes;
+        numCartoes++;
     }
     
     public cartaoPrata()
     {
         super();
-        this.cartaoPrataID = cartaoPrataID + super.getNumCartao();
-        super.incrementaNumCartao();
+        this.cartaoPrataID = cartaoPrataID + numCartoes;
+        numCartoes++;
     }
     
     @Override
     public String tostring()
     {
-        return "Cartão: " + cartaoPrataID + "\n" + super.toString();
+        return "Cartão: " + getCartaoPrataID() + "\n" + super.toString();
     }
     
-    public String tostring2()
+    @Override
+    public String toString2()
     {
-        return "Cartão: " + cartaoPrataID + "\n" + super.toString() + "\nMensalidade:" + calculaMensalidade();
+        return "Cartão: " + getCartaoPrataID() + super.tostring() + "\nMensalidade (em €):" + calculaMensalidade();
+    }
+    
+    @Override
+    public String toString3()
+    {
+        return "Cartão: " + getCartaoPrataID();
     }
     
     @Override
     public float calculaMensalidade()
     {
         return super.getNumPecas() * super.getPbp();
+    }
+
+    public String getCartaoPrataID() {
+        return cartaoPrataID;
+    }
+
+    @Override
+    public float calculaMensalidadeSemDesconto() {
+        return getNumPecas() * getPbp();
     }
     
 }

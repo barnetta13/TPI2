@@ -9,30 +9,33 @@ package tpi2;
  *
  * @author Daniel Martins
  */
-public abstract class cartaoOuro extends cartaoDesconto{
-
+public class cartaoOuro extends cartaoDesconto{
     
     private String cartaoOuroID = "CCD-Ouro-";
     
-    private static int mensalidadeBase = 10;
+    private static float mensalidadeBase = 10;
     private static int saldoPecas = 25;
     
     private static float descontoPecasAdicionais = 0.2f;
     
     private int numPecasTransitar = 0;
-    private int numPecasMesAnterior = 0;
     
     public cartaoOuro(String nome, int contribuinte, int numPecas)
     {
         super(nome, contribuinte, numPecas);
-        this.cartaoOuroID = cartaoOuroID + super.getNumCartao();
+        this.cartaoOuroID = cartaoOuroID + getNumCartoesDesconto();
+        incrementaNumCartoesDesconto();
+        //super.incrementaNumCartao();
+        insereSaldoProxMes();
     }
     
     public cartaoOuro()
     {
         super();
-        this.cartaoOuroID = cartaoOuroID + super.getNumCartao();
-        super.incrementaNumCartao();
+        this.cartaoOuroID = cartaoOuroID + getNumCartoesDesconto();
+        incrementaNumCartoesDesconto();
+        //incrementaNumCartao();
+        insereSaldoProxMes();
     }
     
     @Override
@@ -41,51 +44,54 @@ public abstract class cartaoOuro extends cartaoDesconto{
         return "Cartão: " + getCartaoOuroID() + "\n" + super.toString();
     }
     
-    public String tostring2()
+    @Override
+    public String toString2()
     {
-        return "Cartão: " + getCartaoOuroID() + "\n" + super.toString() + "Número de peças creditadas do mês passado:" 
-                + getNumPecasMesAnterior() + "Numero de peças a creditar no próximo mês:" + getNumPecasTransitar() + 
-                "Mensalide S/ Desconto (em €): " + calculaMensalidadeSemDesconto() + 
-                "\nMensalidade C/ Descconto (em €):" + calculaMensalidade();
+        return "Cartão: " + getCartaoOuroID() + super.tostring() + "\nNumero de peças a creditar no próximo mês: " 
+                + getNumPecasTransitar() + "\nMensalide S/ Desconto: " + calculaMensalidadeSemDesconto() + 
+                "€\nMensalidade C/ Descconto: " + calculaMensalidade() + "€";
+    }
+    
+    @Override
+    public String toString3()
+    {
+        return "Cartão: " + getCartaoOuroID();
     }
     
     public int getNumeroPecasAdicionais()
     {
-        return super.getNumPecas() - saldoPecas; 
+        return getNumPecas() - saldoPecas; 
     }
     
     @Override
     public float calculaMensalidade()
     {
+        if (getNumPecas() > saldoPecas)
+        {
         float desconto = 1 - descontoPecasAdicionais;
         float novoPBP = cartoes.getPbp() * desconto;
         float valorAdicional = getNumeroPecasAdicionais() * novoPBP;
         return mensalidadeBase + valorAdicional;
+        }
+        else
+            return mensalidadeBase;
     }
 
-    public float calculaSaldoProxMes()
+    public void insereSaldoProxMes()
     {
-        
         if (this.getNumPecas() < saldoPecas)
         {
-            setNumPecasTransitar(saldoPecas - this.getNumPecas());
+            numPecasTransitar = saldoPecas - this.getNumPecas();
         }
         else 
-            setNumPecasTransitar(0);  
-        return getNumPecasTransitar();
-    }
-    
-    public void mudaMes()
-    {
-        setNumPecasMesAnterior(getNumPecasTransitar());
-        setNumPecasTransitar(0);
+            numPecasTransitar = 0;  
     }
     
     public String getCartaoOuroID() {
         return cartaoOuroID;
     }
     
-    public static int getMensalidadeBase() {
+    public static float getMensalidadeBase() {
         return mensalidadeBase;
     }
 
@@ -113,16 +119,14 @@ public abstract class cartaoOuro extends cartaoDesconto{
         return numPecasTransitar;
     }
 
-    public int getNumPecasMesAnterior() {
-        return numPecasMesAnterior;
+    @Override
+    public float calculaMensalidadeSemDesconto() {
+        float mensalidade = getNumPecas() * getPbp();
+        if (mensalidade > mensalidadeBase)
+        {
+            return mensalidade;
+        }
+        else
+            return mensalidadeBase;
     }
-
-    public void setNumPecasTransitar(int numPecasTransitar) {
-        this.numPecasTransitar = numPecasTransitar;
-    }
-
-    public void setNumPecasMesAnterior(int numPecasMesAnterior) {
-        this.numPecasMesAnterior = numPecasMesAnterior;
-    }
-    
 }

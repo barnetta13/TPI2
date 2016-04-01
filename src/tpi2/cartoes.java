@@ -11,7 +11,6 @@ package tpi2;
  */
 public abstract class cartoes {
 
-    
     private int numCartao = 1;
     private String nome;
     private int contribuinte;
@@ -19,7 +18,7 @@ public abstract class cartoes {
     
     private static float pbp = 0.5f;
     
-    private static final String NOME_POR_OMISSAO = "N/A";
+    private static final String NOME_POR_OMISSAO = "Consumidor Final";
     private static final int CONTRIBUINTE_POR_OMISSAO = 999999990;
     private static final int NUMERO_PECAS_POR_OMISSAO = 0;
     
@@ -39,19 +38,15 @@ public abstract class cartoes {
     
     public abstract float calculaMensalidade();
     
-    public float calculaMensalidadeSemDesconto()
-    {
-        return getNumPecas() * getPbp();
-    }
+    public abstract String toString2();
     
-    public float calculaPeso()
-    {
-        return 
-    }
+    public abstract String toString3();
+    
+    public abstract float calculaMensalidadeSemDesconto();
     
     public String tostring()
     {
-        return "\nNome: " + nome + "\nContribuinte: " + contribuinte + "Número de Peças (mês actual): " + numPecas;
+        return "\nNome: " + nome + "\nContribuinte: " + contribuinte + "\nNúmero de Peças (mês actual): " + numPecas;
     }
     
     public void incrementaNumCartao()
