@@ -25,6 +25,7 @@ public class TPI2 {
         cartaoPlatina platina1 = new cartaoPlatina("Matilde",444666888,78);
         cartaoPlatina platina2 = new cartaoPlatina("André",555777999,165);
         cartaoPlatina platina3 = new cartaoPlatina("Miguel",666888000,278);
+ 
         
         Object[] listaCartoes = new Object[10];
         
