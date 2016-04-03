@@ -94,5 +94,14 @@ public abstract class cartaoDesconto extends cartoes{
     {
         return super.tostring();
     }
+    
+    /**
+     * Modifica o número de cartões desconto
+     * 
+     * @param aNumCartoesDesconto novo número de cartões desconto
+     */
+    public static void setNumCartoesDesconto(int aNumCartoesDesconto) {
+        numCartoesDesconto = aNumCartoesDesconto;
+    }
    
 }

@@ -117,6 +117,7 @@ public class cartaoPlatina extends cartaoDesconto{
     
     /**
      * aplica o desconto mencionado à mensalidade base
+     * @return 
      */
     public float novaMensalidadeBase()
     {
@@ -305,5 +306,23 @@ public class cartaoPlatina extends cartaoDesconto{
      */
     public static void setMensalidadeBase(float novaMensalidadeBase) {
         mensalidadeBase = novaMensalidadeBase;
+    }
+
+    /**
+     * Modifica o Id do cartao platina
+     * 
+     * @param cartaoPlatinaID novo ID cartao platina
+     */
+    public void setCartaoPlatinaID(String cartaoPlatinaID) {
+        this.cartaoPlatinaID = cartaoPlatinaID;
+    }
+
+    /**
+     * Modifica o total de peças lavadas
+     * 
+     * @param totalPecas novo total de peças lavadas
+     */
+    public void setTotalPecas(int totalPecas) {
+        this.totalPecas = totalPecas;
     }
 }

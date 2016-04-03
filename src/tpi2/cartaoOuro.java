@@ -129,10 +129,10 @@ public class cartaoOuro extends cartaoDesconto{
     {
         if (this.getNumPecas() < saldoPecas)
         {
-            numPecasTransitar = saldoPecas - this.getNumPecas();
+            setNumPecasTransitar(saldoPecas - this.getNumPecas());
         }
         else 
-            numPecasTransitar = 0;  
+            setNumPecasTransitar(0);  
     }
     
     /**
@@ -177,7 +177,7 @@ public class cartaoOuro extends cartaoDesconto{
      * @param novaMensalidadeBase nova mensalidade base
      */
     public static void setMensalidadeBase(int novaMensalidadeBase) {
-        mensalidadeBase = novaMensalidadeBase;
+        setMensalidadeBase(novaMensalidadeBase);
     }
 
     /**
@@ -222,5 +222,33 @@ public class cartaoOuro extends cartaoDesconto{
         }
         else
             return mensalidadeBase;
+    }
+
+    /**
+     * Modifica o ID do cartão Ouro
+     * 
+     * @param cartaoOuroID novo ID cartão ouro
+     */
+    public void setCartaoOuroID(String cartaoOuroID) {
+        this.cartaoOuroID = cartaoOuroID;
+    }
+
+    /**
+     * Modifica o número de peças a creditar
+     * 
+     * @param numPecasTransitar novo número peças creditar
+     */
+    public void setNumPecasTransitar(int numPecasTransitar) {
+        this.numPecasTransitar = numPecasTransitar;
+    }
+    
+    
+    /**
+     * Modifica a mensalidade
+     * 
+     * @param novaMensalidadeBase nova mensalidade
+     */
+    public static void setMensalidadeBase(float novaMensalidadeBase) {
+        mensalidadeBase = novaMensalidadeBase;
     }
 }

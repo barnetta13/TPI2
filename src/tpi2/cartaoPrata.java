@@ -10,7 +10,7 @@ package tpi2;
  * @author Daniel Martins
  */
 public class cartaoPrata extends cartoes{
-    
+
     // atributo que contém ID dos cartoes prata
     private String cartaoPrataID = "CSD-Prata-";
     
@@ -107,6 +107,33 @@ public class cartaoPrata extends cartoes{
     @Override
     public float calculaMensalidadeSemDesconto() {
         return getNumPecas() * getPbp();
+    }
+
+    /**
+     * Modifica o ID do cartão Prata
+     * 
+     * @param cartaoPrataID novo ID cartão prata
+     */
+    public void setCartaoPrataID(String cartaoPrataID) {
+        this.cartaoPrataID = cartaoPrataID;
+    }
+    
+    /**
+     * Devolve o número de cartões
+     * 
+     * @return número de cartões
+     */
+    public static int getNumCartoes() {
+        return numCartoes;
+    }
+
+    /**
+     * Modifica o número de cartões
+     * 
+     * @param novoNumCartoes novo número de cartões
+     */
+    public static void setNumCartoes(int novoNumCartoes) {
+        numCartoes = novoNumCartoes;
     }
     
 }

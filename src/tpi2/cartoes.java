@@ -34,17 +34,17 @@ public abstract class cartoes {
     /**
      * O nome do cliente por omissão.
      */
-    private static final String NOME_POR_OMISSAO = "Consumidor Final";
+    private static String NOME_POR_OMISSAO = "Consumidor Final";
     
     /**
      * O contribuinte do cliente por omissão.
      */
-    private static final int CONTRIBUINTE_POR_OMISSAO = 999999990;
+    private static int CONTRIBUINTE_POR_OMISSAO = 999999990;
     
     /**
      * O número mensal de peças lavadasdo cliente por omissão.
      */
-    private static final int NUMERO_PECAS_POR_OMISSAO = 0;
+    private static int NUMERO_PECAS_POR_OMISSAO = 0;
     
     /**
      * Inicializa um novo cartão atribuindo o nome, o contribuinte e o
@@ -184,5 +184,59 @@ public abstract class cartoes {
      */
     public static void setPbp(float novoPBP) {
         pbp = novoPBP;
+    }
+    
+    /**
+     * Devolve o nome por omissão
+     * 
+     * @return nome por omissão
+     */
+    public static String getNOME_POR_OMISSAO() {
+        return NOME_POR_OMISSAO;
+    }
+
+    /**
+     * Devolve o contribuinte por omissão
+     * 
+     * @return contribuinte por omissão
+     */
+    public static int getCONTRIBUINTE_POR_OMISSAO() {
+        return CONTRIBUINTE_POR_OMISSAO;
+    }
+
+    /**
+     * Devolve o número de peças por omissão
+     * 
+     * @return número de pelas por omissão
+     */
+    public static int getNUMERO_PECAS_POR_OMISSAO() {
+        return NUMERO_PECAS_POR_OMISSAO;
+    }
+
+    /**
+     * Modifica o nome por omissão
+     *
+     * @param aNOME_POR_OMISSAO novo nome por omissão
+     */
+    public static void setNOME_POR_OMISSAO(String aNOME_POR_OMISSAO) {
+        NOME_POR_OMISSAO = aNOME_POR_OMISSAO;
+    }
+
+    /**
+     * Modifica o contribuinte por omissão
+     *
+     * @param aCONTRIBUINTE_POR_OMISSAO novo contribuinte por omissão
+     */
+    public static void setCONTRIBUINTE_POR_OMISSAO(int aCONTRIBUINTE_POR_OMISSAO) {
+        CONTRIBUINTE_POR_OMISSAO = aCONTRIBUINTE_POR_OMISSAO;
+    }
+
+    /**
+     * Modifica o número de peças por omissão
+     *
+     * @param aNUMERO_PECAS_POR_OMISSAO novo número de pelas por omissão
+     */
+    public static void setNUMERO_PECAS_POR_OMISSAO(int aNUMERO_PECAS_POR_OMISSAO) {
+        NUMERO_PECAS_POR_OMISSAO = aNUMERO_PECAS_POR_OMISSAO;
     }
 }
